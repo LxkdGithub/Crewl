@@ -16,3 +16,7 @@ type InvalidComment struct {
 	Comment
 	ValidKey []string
 }
+
+type LoginErrorStruct struct {
+	err string
+}
