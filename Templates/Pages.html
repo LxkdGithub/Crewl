@@ -1,0 +1,14 @@
+<meta charset="UTF-8">
+<div style="height:30px;margin:20px 0 0 0;">
+    {{ if .HasPre }}
+    <span id="spanPre">上一页</span>
+    {{ end }}
+    {{ if .HasNext }}
+    <span id="spanNext">下一页</span>
+    {{ end }}
+    第
+    <span id="spanPageNum">{{ .page }}</span>
+    页/共
+    <span id="spanTotalPage">{{ .pageCount }}</span>
+    页
+</div>

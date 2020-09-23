@@ -2,21 +2,32 @@ package Config
 
 
 type LoginForm struct {
-	Username string `form:username`
-	Password string `from:password`
+	Username string `form:"username" binding:"required"`
+	Password string `form:"password" binding:"required"`
 }
 
 type Comment struct {
-	Bid string
-	Uid string
+	Id 		string
+	Bid     string
+	Uid     string
 	Content string
+	Time 	string
 }
 
 type InvalidComment struct {
-	Comment
-	ValidKey []string
+	Id 		string
+	Bid     string
+	Uid     string
+	Content string
+	Time 	string
+	Sensitive string
 }
 
-type LoginErrorStruct struct {
-	err string
+type UserCookie struct {
+	BI_UUID string
+	UserName string
 }
+
+
+
+

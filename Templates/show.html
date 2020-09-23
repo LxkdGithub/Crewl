@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Show</title>
+    <style type="text/css">
+
+        .head_area {
+
+        }
+
+        .header_tag {
+            margin-left: 35%;
+            width: 30%;
+        }
+
+        .user {
+            margin-top: -50px;
+            margin-left: 80%;
+        }
+
+        .show_area {
+            margin-top: 100px;
+        }
+
+    </style>
+    <script>
+        <!-- Row Highlight Javascript -->
+        window.onload=function(){
+            var tfrow = document.getElementById('tfhover').rows.length;
+            var tbRow=[];
+            for (var i=1;i<tfrow;i++) {
+                tbRow[i]=document.getElementById('tfhover').rows[i];
+                tbRow[i].onmouseover = function(){
+                    this.style.backgroundColor = '#ffffff';
+                };
+                tbRow[i].onmouseout = function() {
+                    this.style.backgroundColor = '#d4e3e5';
+                };
+            }
+        };
+    </script>
+</head>
+
+<body>
+
+<div class="head_area">
+    <h1 class="header_tag">Supervise System</h1>
+    <h3 class="switch">{{ if .IsExcept }}<a href="/Normal">Normal</a>{{ else }}<a href="/Exception">Exception</a>{{ end }}</h3>
+    <div class="user">{{ .Username }}</div>
+</div>
+
+<div class="show_area">
+<style type="text/css">
+    table.tftable {font-size:12px;color:#333333;width:100%;border-width: 1px;border-color: #729ea5;border-collapse: collapse;}
+    table.tftable th {font-size:12px;background-color:#acc8cc;border-width: 1px;padding: 8px;border-style: solid;border-color: #729ea5;text-align:left;}
+    table.tftable tr {background-color:#d4e3e5;}
+    table.tftable td {font-size:12px;border-width: 1px;padding: 8px;border-style: solid;border-color: #729ea5;}
+</style>
+    {{ if .had }}
+    <table id="tfhover" class="tftable" border="1">
+        <tr><th>Index</th><th>Bv ID</th><th>UID</th><th>Content</th><th>Time</th>{{ if .IsExcept }}<th>Sensitive</th>{{ end }}</tr>
+        {{ .Content }}
+    </table>
+    <div style="height:30px;margin:20px 0 0 0;">
+        {{ if .HasPre }}
+            <span id="spanPre"><a href="{{ .PreLink }}">上一页</a></span>
+        {{ end }}
+        {{ if .HasNext }}
+            <span id="spanNext"><a href="{{ .NextLink }}">下一页</a></span>
+        {{ end }}
+        第
+        <span id="spanPageNum">{{ .page }}</span>
+        页/共
+        <span id="spanTotalPage">{{ .pageCount }}</span>
+        页
+    </div>
+    {{ end }}
+
+    <p style="margin-left: 10%;"><small>Created with the <a href="http://www.textfixer.com/html/html-table-generator.php" target="_blank">HTML Table Generator</a></small></p>
+</div>
+
+</body>
+</html>

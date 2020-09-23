@@ -45,16 +45,24 @@
         height: 40px;
         width :70%;
     }
+
+    .login_error {
+        width: 50%;
+        margin-left: 25%;
+    }
     -->
     </style>
 </head>
 <body>
 <div id="form_div" class="form_div">
-    <form action="/Login" method="post" class="form_class">
+    <form action="/LoginAction" method="post" class="form_class">
         <label class="form_label">Login</label>
         <input type="text" name="username" class="username" placeholder="用户名">
         <input type="password" name="password" class="password" placeholder="密码">
         <input type="submit" class="sub_button" value="Login">
+        <div class="login_error">
+            {{ .error }}
+        </div>
     </form>
 </div>
 </body>
