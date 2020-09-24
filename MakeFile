@@ -1,0 +1,24 @@
+FROM golang:alpine
+
+ENV GO111MODULE=on \
+    CGO_ENABLE=0 \
+    GOOS=linux \
+    GOARCH=amd64
+
+# 到工作目录build
+WORKDIR /build
+
+# 复制代码到工作目录
+COPY . .
+
+RUN go build -o app .
+
+# 二进制文件目录
+WORKDIR /dist
+
+RUN cp /build/app .
+
+# go服务端口
+EXPOSE 9999
+
+CMD ["/dist/app"]
